@@ -1,0 +1,75 @@
+<div class="leave-container">
+  <!-- Left Side: Form -->
+  <div class="form-section">
+    <h2>Leave Application</h2>
+    <form [formGroup]="leaveForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Leave Type</mat-label>
+        <input matInput formControlName="leaveType" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>From Date</mat-label>
+        <input matInput type="text" formControlName="fromDate" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Till Date</mat-label>
+        <input matInput type="text" formControlName="tillDate" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status" required>
+          <mat-option value="Pending">Pending</mat-option>
+          <mat-option value="Approved">Approved</mat-option>
+          <mat-option value="Rejected">Rejected</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Note</mat-label>
+        <textarea matInput formControlName="note"></textarea>
+      </mat-form-field>
+
+      <div formGroupName="employee">
+        <mat-form-field appearance="fill">
+          <mat-label>Employee ID</mat-label>
+          <input matInput formControlName="employeeId" readonly>
+        </mat-form-field>
+      </div>
+
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </form>
+  </div>
+
+  <!-- Right Side: Table -->
+  <div class="table-section">
+    <div class="table-header">
+      <h2>All Leave Logs and Requests</h2>
+      <p>View and manage all leave applications and their statuses.</p>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Leave Type</th>
+          <th>From Date</th>
+          <th>Till Date</th>
+          <th>Status</th>
+          <th>Note</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let leave of leaveDetails">
+          <td>{{ leave.leaveType }}</td>
+          <td>{{ leave.fromDate | date }}</td> <td>{{ leave.tillDate | date }}</td> <td>{{ leave.status }}</td>
+          <td>{{ leave.note }}</td>
+        </tr>
+          <tr *ngIf="leaveDetails.length === 0">
+            <td colspan="6">No leave details found.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

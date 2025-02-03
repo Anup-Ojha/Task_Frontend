@@ -1,0 +1,108 @@
+.leave-container {
+  display: flex;
+  gap: 20px; /* Space between form and table */
+  padding: 5px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Left Side: Form */
+.form-section {
+  flex: 1; /* Takes up 50% of the container */
+  max-width: 50%; /* Limits form width */
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-section h2 {
+  font-size: 24px;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.form-section form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-section .mat-form-field {
+  width: 100%;
+}
+
+.form-section button[type="submit"] {
+
+  background-color: #007bff;
+  color: #fff;
+  font-weight: 500;
+
+  transition: background-color 0.3s ease;
+}
+
+.form-section button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Right Side: Table */
+.table-section {
+  flex: 1; /* Takes up 50% of the container */
+  max-width: 50%; /* Limits table width */
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.table-header {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.table-header h2 {
+  font-size: 24px;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.table-header p {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f0f0f0;
+  font-weight: 600;
+  color: #333;
+}
+
+tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .leave-container {
+    flex-direction: column;
+  }
+
+  .form-section,
+  .table-section {
+    max-width: 100%; /* Full width on smaller screens */
+  }
+}

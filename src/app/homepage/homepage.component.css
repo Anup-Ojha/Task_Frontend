@@ -1,0 +1,99 @@
+.example-container {
+  display: flex;
+  height: 95vh;
+  width: 100%;
+}
+
+b {
+  border: 2px dashed #333;
+  padding: 4px;
+  display: inline-block; /* Ensures the border wraps properly */
+}
+
+
+mat-drawer {
+  width: 220px; /* Slightly increased width */
+  background: linear-gradient(180deg, #2c3e50, #34495e);
+  color: white;
+  padding-top: 20px;
+  box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+  transition: width 0.3s ease;
+}
+
+.menu-header {
+  text-align: center;
+  font-size: 1.3rem; /* Slightly smaller font size */
+  font-weight: bold;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 15px;
+  color: #f39c12;
+}
+
+mat-nav-list {
+  padding: 0; /* Removed padding from the list */
+}
+
+mat-list-item {
+  display: flex;
+  align-items: center; /* Vertically center icon and text */
+  padding: 12px 20px; /* Adjusted padding */
+  color: white;
+  font-size: 1rem;
+  border-radius: 8px;
+  margin: 6px 10px; /* Added margin to the sides */
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+mat-list-item:hover {
+  background-color: #f39c12;
+  cursor: pointer;
+  transform: translateX(5px);
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+mat-icon {
+  width: 24px; /* Set icon width */
+  height: 24px; /* Set icon height */
+  font-size: 24px;
+  color: #f39c12;
+  margin-right: 10px; /* Space between icon and text */
+}
+
+mat-drawer-content {
+  flex: 1; /* Use flex-grow to fill remaining space */
+  background-color: #f5f6fa;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.menu-toggle-button {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  background-color: #f39c12;
+  color: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.menu-toggle-button:hover {
+  background-color: #e67e22;
+}
+
+/* Styles for the menu items */
+.mat-nav-list .mat-list-item .mat-list-item-content {
+    display: flex;
+    align-items: center;
+}
+
+.mat-nav-list .mat-list-item .mat-list-item-content .mat-list-item-icon {
+    margin-right: 10px; /* Adjust spacing as needed */
+}
+
+.mat-nav-list .mat-list-item .mat-list-item-content .mat-list-item-text {
+    flex-grow: 1; /* Allow text to take up available space */
+}

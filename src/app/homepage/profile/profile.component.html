@@ -1,0 +1,103 @@
+<div class="employee-details">
+  <h2>Employee Details</h2>
+
+  <div class="card-container">  <mat-card class="employee-card">
+      <mat-card-header>
+        <mat-card-title>Personal Information</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="detail-row">
+          <span class="detail-label">Employee ID:</span>
+          <span class="detail-value">{{ employee.employeeId }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Full Name:</span>
+          <span class="detail-value">{{ employee.firstName }} {{ employee.lastName }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Date of Birth:</span>
+          <span class="detail-value">{{ employee.dateOfBirth | date }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Hire Date:</span>
+          <span class="detail-value">{{ employee.hireDate | date }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Manager ID:</span>
+          <span class="detail-value">{{ employee.managerId }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Salary:</span>
+          <span class="detail-value">{{ employee.salary }} LPA</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Username:</span>
+          <span class="detail-value">{{ employee.username }}</span>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="account-card">
+      <mat-card-header>
+        <mat-card-title>Account Details</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngFor="let account of employee.accountDetails; let isLast = last">
+          <div class="detail-row">
+            <span class="detail-label">Account Number:</span>
+            <span class="detail-value">{{ account.accountNumber }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Bank Name:</span>
+            <span class="detail-value">{{ account.bankName }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">IFSC Code:</span>
+            <span class="detail-value">{{ account.ifciCode }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Branch:</span>
+            <span class="detail-value">{{ account.branch }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Account Name:</span>
+            <span class="detail-value">{{ account.accountName }}</span>
+          </div>
+          <hr *ngIf="!isLast">  </div>
+      </mat-card-content>
+    </mat-card>
+
+
+    <mat-card class="department-card">
+      <mat-card-header>
+        <mat-card-title>Department Details</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngFor="let department of employee.departmentDetails">
+        <div class="detail-row">
+          <span class="detail-label">Department Name:</span>
+          <span class="detail-value">{{ department.departmentName }}</span>
+        </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="asset-card">
+      <mat-card-header>
+        <mat-card-title>Asset Details</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngFor="let asset of employee.assetsDetails; let isLast = last">
+          <div class="detail-row">
+            <span class="detail-label">Asset Name:</span>
+            <span class="detail-value">{{ asset.assetName }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Asset Type:</span>
+            <span class="detail-value">{{ asset.assetType }}</span>
+          </div>
+          <hr *ngIf="!isLast"> </div>
+      </mat-card-content>
+    </mat-card>
+
+  </div> </div>

@@ -1,0 +1,38 @@
+<div class="login-container">
+  <h2>Log in to the EMS</h2>
+  <p class="subtext">Employee Management System</p>
+ 
+  <div class="loginform">
+    <div class="example-containers">
+      <form [formGroup]="reactiveForm" (ngSubmit)="onFormSubmit()">
+        <div class="form-divide">
+          <mat-form-field class="example-form-field">
+            <mat-label>Enter your Username</mat-label>
+            <input matInput type="text" formControlName="username">
+            <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+        <div class="example-form-field">
+          <mat-form-field>
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+        <div class="button">
+          <button mat-raised-button color="accent" value="submit" type="submit">Login</button>
+        </div>
+      </form>
+
+      <div class="register-option">
+        <p>For new Employee</p>
+        <button mat-button color="primary" (click)="goToRegister()">Go to Register</button>
+      </div>
+    </div>
+  </div>
+</div>

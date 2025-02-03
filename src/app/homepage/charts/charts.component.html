@@ -1,0 +1,14 @@
+<section>
+    <mat-button-toggle-group aria-label="Font Style" (click)="onCalanderButtonClick()" multiple>
+      <mat-button-toggle>Calander</mat-button-toggle>
+    </mat-button-toggle-group>
+</section>
+<hr>
+<br>
+<div *ngIf="!show" >
+    <app-calander></app-calander>
+</div>
+
+
+<app-dailycharts *ngIf="show"></app-dailycharts>
+<br>

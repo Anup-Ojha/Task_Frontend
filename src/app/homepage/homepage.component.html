@@ -1,0 +1,36 @@
+<mat-drawer-container class="example-container">
+  <!-- Sidebar -->
+  <mat-drawer mode="side" [opened]="drawerOpened" role="navigation">
+    <div class="menu-header">
+        <h1><b> EMS </b></h1>
+    </div>
+
+    <mat-nav-list>
+      
+      <a mat-list-item routerLink="home" (click)="navigateToMenu()">
+        <mat-icon svgIcon="attendance"></mat-icon> Attendance
+      </a>
+
+      <a mat-list-item routerLink="/profile" (click)="navigateToProfile()">
+        <mat-icon svgIcon="profile"></mat-icon> Profile
+      </a>
+
+      <a mat-list-item routerLink="/group" (click)="navigateToGroup()">
+        <mat-icon svgIcon="group"></mat-icon> Leave Logs
+      </a>
+
+      <a mat-list-item routerLink="/settings" (click)="navigateToSettings()">
+        <mat-icon svgIcon="logout"></mat-icon> Logout
+      </a>
+    </mat-nav-list>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <div *ngIf="on">
+      <app-charts></app-charts>
+    </div>
+    <div *ngIf="!on">
+    <router-outlet ></router-outlet>
+  </div>
+  </mat-drawer-content>
+</mat-drawer-container>

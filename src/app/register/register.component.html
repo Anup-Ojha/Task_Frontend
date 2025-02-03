@@ -1,0 +1,126 @@
+<div class="form-alignment">
+  <form [formGroup]="singleForm" (ngSubmit)="onSubmit()">
+    <mat-stepper [linear]="isLinear" class="example-stepper">
+      <mat-step [stepControl]="singleForm">
+        <ng-template matStepLabel>Employee Information</ng-template>
+        <mat-form-field class="width">
+          <mat-label>First Name</mat-label>
+          <input matInput placeholder="First name" formControlName="firstName" required>
+        </mat-form-field>
+        <mat-form-field class="width">
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="Last name" formControlName="lastName" required>
+        </mat-form-field>
+        <mat-form-field class="width">
+          <mat-label>Date Of Birth</mat-label>
+          <input matInput placeholder="Date of Birth" formControlName="dateOfBirth" required>
+        </mat-form-field>
+        <mat-form-field class="width">
+          <mat-label>Manager Id</mat-label>
+          <input matInput placeholder="Manager Id" formControlName="managerId" required>
+        </mat-form-field>
+        <mat-form-field class="width">
+          <mat-label>Salary in LPA</mat-label>
+          <input matInput placeholder="Salary" formControlName="salary" required>
+        </mat-form-field>
+        <mat-form-field class="width">
+          <mat-label>Username</mat-label>
+          <input matInput placeholder="Username" formControlName="username" required>
+        </mat-form-field>
+        <mat-form-field class="width">
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="Password" formControlName="password" required>
+        </mat-form-field>
+        <mat-form-field class="width">
+          <mat-label>Date Of Joining</mat-label>
+          <input matInput placeholder="Date of Joining" formControlName="hireDate" required>
+        </mat-form-field>
+        <div>
+          <button type="button" mat-button matStepperNext>Next</button>
+        </div>
+      </mat-step>
+      <mat-step [stepControl]="singleForm">
+        <ng-template matStepLabel>Account Information and Department Details</ng-template>
+        <div formArrayName="accountDetails">
+          <div *ngFor="let account of accountDetails.controls; let i = index" [formGroupName]="i">
+            <mat-form-field class="width">
+              <mat-label>Account Number</mat-label>
+              <input matInput placeholder="Account Number" formControlName="accountNumber" required>
+            </mat-form-field>
+            <mat-form-field class="width">
+              <mat-label>Account Name</mat-label>
+              <input matInput placeholder="Account Name" formControlName="accountName" required>
+            </mat-form-field>
+            <mat-form-field class="width">
+              <mat-label>IFCI Code</mat-label>
+              <input matInput placeholder="IFCI Code" formControlName="ifciCode" required>
+            </mat-form-field>
+            <mat-form-field class="width">
+              <mat-label>Branch Name</mat-label>
+              <input matInput placeholder="Branch Name" formControlName="branch" required>
+            </mat-form-field>
+            <mat-form-field class="width">
+              <mat-label>Bank Name</mat-label>
+              <input matInput placeholder="Bank Name" formControlName="bankName" required>
+            </mat-form-field>
+          </div>
+        </div>
+        <div formArrayName="departmentDetails">
+          <div *ngFor="let department of departmentDetails.controls; let i = index" [formGroupName]="i">
+            <mat-form-field class="width">
+              <mat-label>Department Name</mat-label>
+              <input matInput placeholder="Department Name" formControlName="departmentName" required>
+            </mat-form-field>
+          </div>
+        </div>
+        <div>
+          <button type="button" mat-button matStepperPrevious>Back</button>
+          <button type="button" mat-button matStepperNext>Next</button>
+        </div>
+      </mat-step>
+      <mat-step [stepControl]="singleForm">
+        <ng-template matStepLabel>Assets and Leave Details</ng-template>
+        <div formArrayName="leavesDetails">
+          <div *ngFor="let leave of leavesDetails.controls; let i = index" [formGroupName]="i">
+            <mat-form-field class="width">
+              <mat-label>Leave Type</mat-label>
+              <input matInput placeholder="Leave Type" formControlName="leaveType" required>
+            </mat-form-field>
+            <mat-form-field class="width">
+              <mat-label>From Date</mat-label>
+              <input matInput placeholder="From Date" formControlName="fromDate" required>
+            </mat-form-field>
+            <mat-form-field class="width">
+              <mat-label>To Date</mat-label>
+              <input matInput placeholder="To Date" formControlName="tillDate" required>
+            </mat-form-field>
+            <mat-form-field class="width">
+              <mat-label>Note / reason</mat-label>
+              <input matInput placeholder="Note / reason" formControlName="note" required>
+            </mat-form-field>
+            <mat-form-field class="width">
+              <mat-label>Status of Request</mat-label>
+              <input matInput placeholder="Status of Request" formControlName="status" required>
+            </mat-form-field>
+          </div>
+        </div>
+        <div formArrayName="assetsDetails">
+          <div *ngFor="let asset of assetsDetails.controls; let i = index" [formGroupName]="i">
+            <mat-form-field class="width">
+              <mat-label>Assets Name</mat-label>
+              <input matInput placeholder="Assets Name" formControlName="assetName" required>
+            </mat-form-field>
+            <mat-form-field class="width">
+              <mat-label>Assets Type</mat-label>
+              <input matInput placeholder="Assets Type" formControlName="assetType" required>
+            </mat-form-field>
+          </div>
+        </div>
+        <div>
+          <button type="button" mat-button matStepperPrevious>Back</button>
+          <button mat-button type="submit" >Submit</button>
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </form>
+</div>

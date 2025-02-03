@@ -1,0 +1,39 @@
+.mat-mdc-radio-button ~ .mat-mdc-radio-button {
+  margin-left: 16px;
+}
+
+mat-form-field{
+  display:flexbox;
+  padding: 15px 15px 15px 5px;
+  
+}
+
+
+.width-message{
+  width:300px;
+}
+
+mat-stepper{
+  margin: 5px 5px 15px 5px;
+}
+
+
+.form-alignment{
+  align-items: center;
+  justify-content: center;
+  max-width: 1000px;
+  height: 40%;
+  margin-inline: auto;
+  border: 2px solid;
+  border-radius: 10px;
+}
+
+.details{
+  margin-left: 80%;
+}
+
+.example-additional-selection {
+  opacity: 0.75;
+  font-size: 0.75em;
+}
+
