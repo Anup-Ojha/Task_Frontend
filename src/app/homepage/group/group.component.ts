@@ -56,7 +56,7 @@ export class GroupComponent implements OnInit{
       this.leaveData=this.leaveForm.value;
       this.leaveService.setEmployeeLeaves(this.leaveData);
     }
-    location.reload();
+    this.fetchLeaveDetails();
   }
 
 fetchLeaveDetails(): void {

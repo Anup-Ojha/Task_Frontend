@@ -19,6 +19,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -40,6 +41,7 @@ import { AuthInterceptor } from './interceptors/auth.service';
 import { NgChartsModule } from 'ng2-charts';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { DailychartsComponent } from './homepage/charts/dailycharts/dailycharts.component';
+import { DailyAttendanceService } from './services/DailyAttendanceLogs.service';
 
 
 const routes: Routes = [
@@ -92,10 +94,11 @@ const routes: Routes = [
     NgChartsModule,
     FullCalendarModule,
     MatButtonToggleModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatPaginatorModule
       
   ],
-  providers: [LoginService,LeaveService,{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
+  providers: [LoginService,LeaveService,{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },DailyAttendanceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,7 +5,12 @@
     <form [formGroup]="leaveForm" (ngSubmit)="onSubmit()">
       <mat-form-field appearance="fill">
         <mat-label>Leave Type</mat-label>
-        <input matInput formControlName="leaveType" required>
+        <mat-select formControlName="leaveType" required>
+          <mat-option value="Paid Leave">Paid Leave</mat-option>
+          <mat-option value="Casual Leave">Casual Leave</mat-option>
+          <mat-option value="Floater Leave">Floater Leave</mat-option>
+          <mat-option value="Festive Leave">Festive Leave</mat-option>
+        </mat-select>
       </mat-form-field>
 
       <mat-form-field appearance="fill">

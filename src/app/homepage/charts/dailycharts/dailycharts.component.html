@@ -1,5 +1,4 @@
 <div class="main-container">
-    <!-- Table Container on the Left -->
     <div class="table-container">
         <h2>Daily Attendance Logs</h2>
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -11,18 +10,19 @@
             <ng-container matColumnDef="progress">
                 <th mat-header-cell *matHeaderCellDef>Progress</th>
                 <td mat-cell *matCellDef="let element">
-                    <mat-progress-bar mode="determinate" value="80"></mat-progress-bar>
+                    <mat-progress-bar mode="buffer" color="warn" [value]="element.value"></mat-progress-bar>
                 </td>
             </ng-container>
 
-            <ng-container matColumnDef="timing">
+            <ng-container matColumnDef="timeStamp">
                 <th mat-header-cell *matHeaderCellDef>Timing</th>
-                <td mat-cell *matCellDef="let element">{{ element.timing }}</td>
+                <td mat-cell *matCellDef="let element">{{ element.timeStamp }}</td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
+        
     </div>
 
     <!-- Attendance Form on the Right -->
@@ -36,22 +36,18 @@
 
             <mat-form-field appearance="outline" class="form-field">
                 <mat-label>Login Time</mat-label>
-                <mat-select formControlName="loginTime">
-                    <mat-option *ngFor="let time of timeSlots" [value]="time">
-                        {{ time }}
+                <mat-select formControlName="timeStamp" (selectionChange)="onSelectionChange($event)">
+                    <mat-option *ngFor="let time of timeSlots | keyvalue" [value]="time.key">
+                      {{ time.key }}
                     </mat-option>
-                </mat-select>
+                  </mat-select>
             </mat-form-field>
+           
             <button mat-raised-button color="primary" class="submit-btn" (click)="submitForm()">Submit</button>
         </form>
         <br>
         <br>    
-        <div class="pie-chart-container" >
-            <h2>Total Leaves by Company</h2>
-            <canvas id="MyDonughtChart">{{ chart }}</canvas>
-        </div>
+       
     </div>
-
-    
 </div>
 
