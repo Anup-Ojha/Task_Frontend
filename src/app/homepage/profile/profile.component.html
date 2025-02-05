@@ -1,14 +1,10 @@
-<div >
-  <form #myForm="ngForm" class="top-content" (ngSubmit)="filterDataByWholeYear(myForm)">
+<div class="top-content">
     <mat-form-field>
       <mat-label>Filter Leaves By Year</mat-label>
-      <mat-select ngModel required name="selected" required [(value)]="selected">
+      <mat-select [(value)]="selected" (selectionChange)="filterDataByWholeYear(selected)">
         <mat-option *ngFor="let year of currentYear" [value]="year">{{year}}</mat-option>
       </mat-select>
-      </mat-form-field>
-  <button class="see-details" mat-stroked-button type="submit" [disabled]="!myForm.valid">See Chart</button>
-  </form>
-    
+    </mat-form-field>
 </div>
 
 <hr>

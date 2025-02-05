@@ -82,12 +82,14 @@ export class ProfileComponent implements OnInit {
       // this.lineChart('bar','bar',this.weeksLabelName,this.weeksCountValues);
       },1000)  
     });    
+
+    this.filterDataByWholeYear(this.selected);
   }
 
 
-  filterDataByWholeYear(selected:NgForm){
-    let startDate=selected.value.selected+"-01-01";
-    let endDate=selected.value.selected+"-12-31";
+  filterDataByWholeYear(selected){
+    let startDate=selected+"-01-01";
+    let endDate=selected+"-12-31";
     this.staticLeavesDataService.getFilterYearData(startDate,endDate,this.employee.employeeId).subscribe((data)=>{
         this.yearWholeData=data;
         this.yearCountValues=[]
