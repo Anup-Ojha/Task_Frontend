@@ -3,4 +3,6 @@ export interface AttendaceLogs{
     employeeId:Number
     timeStamp:String 
     value:Number
+    id:Number
 }
+

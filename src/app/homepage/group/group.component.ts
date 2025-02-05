@@ -36,7 +36,6 @@ export class GroupComponent implements OnInit{
       console.error("Error parsing employee data:", error);
     }
 
-    this.fetchLeaveDetails()
     
     this.leaveForm = this.fb.group({
       leaveType: ['', Validators.required],
@@ -48,6 +47,9 @@ export class GroupComponent implements OnInit{
         employeeId: [this.employeesMainData.employeeId, Validators.required]
       })
     });
+
+    this.fetchLeaveDetails()
+
   }
 
   leaveData:Leaves
@@ -56,12 +58,26 @@ export class GroupComponent implements OnInit{
       this.leaveData=this.leaveForm.value;
       this.leaveService.setEmployeeLeaves(this.leaveData);
     }
-    this.fetchLeaveDetails();
+    
+    this.leaveForm = this.fb.group({
+      leaveType: ['', Validators.required],
+      fromDate: ['', Validators.required],
+      tillDate: ['', Validators.required],
+      status: ['', Validators.required],
+      note: [''],
+      employee: this.fb.group({ 
+        employeeId: [this.employeesMainData.employeeId, Validators.required]
+      })
+    });
+
+    setTimeout(()=>{
+    this.fetchLeaveDetails()
+    },1000)
   }
 
 fetchLeaveDetails(): void {
   this.leaveService.getAllEmployeeLeavesData(this.employeesMainData.employeeId).subscribe((data)=>{
-    this.leaveDetails=data.reverse();
+    this.leaveDetails=data.reverse().slice(0,10);
   })
   }
 

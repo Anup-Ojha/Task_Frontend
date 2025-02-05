@@ -42,6 +42,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { DailychartsComponent } from './homepage/charts/dailycharts/dailycharts.component';
 import { DailyAttendanceService } from './services/DailyAttendanceLogs.service';
+import { OrgainzationComponent } from './homepage/orgainzation/orgainzation.component';
 
 
 const routes: Routes = [
@@ -52,7 +53,8 @@ const routes: Routes = [
   
   { path: 'home', component: HomepageComponent, canActivate: [AuthGuard], children: [
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-    { path: 'group', component: GroupComponent, canActivate: [AuthGuard] }
+    { path: 'group', component: GroupComponent, canActivate: [AuthGuard] },
+    { path: 'organization', component:OrgainzationComponent, canActivate:[AuthGuard]}
   ]}
 ];
 
@@ -68,7 +70,8 @@ const routes: Routes = [
     ChartsComponent,
     LoginComponent,
     CalanderComponent,
-    DailychartsComponent
+    DailychartsComponent,
+    OrgainzationComponent
   ],
   imports: [
     BrowserModule,

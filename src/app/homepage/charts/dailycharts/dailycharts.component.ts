@@ -15,7 +15,7 @@ import { LeaveService } from 'src/app/services/leaves.service';
 export class DailychartsComponent {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
-
+  submitButton=false;
 
   displayedColumns: string[] = ['date', 'progress','timeStamp'];
 
@@ -28,7 +28,7 @@ export class DailychartsComponent {
     const isoString = date.toISOString();
     // Split at the "T" character to get the date part
     const formattedDate = isoString.split("T")[0];
-    return formattedDate;
+    return formattedDate.slice(0,10);
 };
 
 // Example usage
@@ -39,7 +39,7 @@ export class DailychartsComponent {
 
   employeeString: string = localStorage.getItem('employee'); 
   employeesMainData: Employee; 
- changes:Number
+  changes:Number
   onSelectionChange(event: any) {
   const selectedKey = event.value;
   const selectedValue = this.timeSlots.get(selectedKey);
@@ -49,7 +49,11 @@ export class DailychartsComponent {
 displayTableData(){
   this.dailyAttendaceService.getAllAttendaceLogs(this.employeesMainData.employeeId).subscribe(
     (data) => {
+      data.reverse();
       this.dataSource = data.slice(0,10);
+      if(this.dataSource[0].date===this.MAIN_DATE){
+        this.submitButton=true;
+      }
     });
 }
 
@@ -74,8 +78,9 @@ displayTableData(){
 
   submitForm() {
     this.dailyAttendaceService.setDailyAttendance(this.attendanceForm.value).subscribe();
-    this.displayTableData();
-
+    setTimeout(()=>{
+      this.displayTableData()
+    },1000); 
   }
  
   

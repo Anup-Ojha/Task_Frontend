@@ -47,7 +47,7 @@ export class HomepageComponent {
     iconRegistry.addSvgIconLiteral('attendance', sanitizer.bypassSecurityTrustHtml(ATTENDANCE_ICON));
 
 
-    console.log(localStorage.getItem('token')); // ✅ Get token from localStorage
+    // console.log(localStorage.getItem('token')); // ✅ Get token from localStorage
 
   }
     drawerOpened = true; // Initially open
@@ -73,6 +73,11 @@ export class HomepageComponent {
     navigateToMenu(){
       this.router.navigate(["home"]);
       this.on=true;
+    }
+
+    navigateToOrganinzation(){
+      this.router.navigate(['home/organization']);
+      this.on=false;
     }
   }
   

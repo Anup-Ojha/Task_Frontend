@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { inject, Injectable, OnInit } from "@angular/core";
 import { Leaves } from "../model/leaves";
 import { StaticLeavesModel } from "../model/staticLeaves";
+import { MonthCount } from "../model/CalendarLogs";
 
 @Injectable()
 export class LeaveService{
@@ -34,7 +35,20 @@ export class LeaveService{
     }
 
     getCountOfStaticLeaves(){
-        return this.http.get<any>("http://localhost:8080/staticLeaves");
+        return this.http.get("http://localhost:8080/staticLeaves");
+    }
+
+    getAllUserLeaveCount(id:Number){
+      return this.http.get(`http://localhost:8080/leaves/count/${id}`);
+    }
+
+    getAllWeeksCount(id:Number){
+      return this.http.get<any>(`http://localhost:8080/leaves/weeks/${id}`);
+    }
+
+
+    getFilterYearData(startDate,endDate,id){
+      return this.http.get<any>(`http://localhost:8080/leaves/filterDateData/${startDate}/${endDate}/${id}`);
     }
 
 }

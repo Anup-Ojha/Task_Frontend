@@ -1,3 +1,17 @@
+<div >
+  <form #myForm="ngForm" class="top-content" (ngSubmit)="filterDataByWholeYear(myForm)">
+    <mat-form-field>
+      <mat-label>Filter Leaves By Year</mat-label>
+      <mat-select ngModel required name="selected" required [(value)]="selected">
+        <mat-option *ngFor="let year of currentYear" [value]="year">{{year}}</mat-option>
+      </mat-select>
+      </mat-form-field>
+  <button class="see-details" mat-stroked-button type="submit" [disabled]="!myForm.valid">See Chart</button>
+  </form>
+    
+</div>
+
+<hr>
 <div class="employee-details">
   <h2>Employee Details</h2>
 
@@ -105,8 +119,28 @@
       <canvas id="pieChart" ></canvas>
   </div>
 
-  <div class="pie-chart-container">
+  <!-- <div class="pie-chart-container">
     <h2>Total Leaves by Company</h2>
     <canvas id="polarArea" ></canvas>
+</div> -->
+
+
+<div class="pie-chart-container">
+  <h2>Total leaves took by you</h2>
+  <canvas id="radar" ></canvas>
 </div>
+
+<div class="pie-chart-container">
+  <h2>Total leaves took by you and Given By Company</h2>
+  <canvas id="bar" ></canvas>
+</div>
+<div class="pie-chart-container" *ngIf="yearChart">
+  <h2>Total leaves took by you In a Particular Year</h2>
+  <canvas id="barChart" ></canvas>
+</div>
+
+<!-- <div class="pie-chart-container">
+  <h2>Total leaves taken by weeks</h2>
+  <canvas id="line" ></canvas>
+</div> -->
   </div> </div>
