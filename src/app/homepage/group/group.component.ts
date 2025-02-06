@@ -14,7 +14,6 @@ import { LoginService } from 'src/app/services/loginhttp.service';
 })
 export class GroupComponent implements OnInit{
 
-
   leaveService=inject(LeaveService)
 
   leaveForm: FormGroup;
@@ -22,7 +21,6 @@ export class GroupComponent implements OnInit{
   constructor(private fb: FormBuilder,private loginService:LoginService,private router:Router) {}
   
   currentEmployee:Employee=this.loginService.getEmployeeData();
-  
   employeeString: string = localStorage.getItem('employee'); 
   employeesMainData: Employee; 
   leaveDetails:Leaves[]=[];

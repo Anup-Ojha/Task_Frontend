@@ -20,6 +20,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatChipsModule} from '@angular/material/chips';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -43,6 +44,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { DailychartsComponent } from './homepage/charts/dailycharts/dailycharts.component';
 import { DailyAttendanceService } from './services/DailyAttendanceLogs.service';
 import { OrgainzationComponent } from './homepage/orgainzation/orgainzation.component';
+import { AllEmployees } from './services/AllEmployees.service';
 
 
 const routes: Routes = [
@@ -98,10 +100,11 @@ const routes: Routes = [
     FullCalendarModule,
     MatButtonToggleModule,
     MatProgressBarModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatChipsModule
       
   ],
-  providers: [LoginService,LeaveService,{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },DailyAttendanceService],
+  providers: [LoginService,LeaveService,AllEmployees,{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },DailyAttendanceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

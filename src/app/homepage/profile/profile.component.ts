@@ -78,7 +78,7 @@ export class ProfileComponent implements OnInit {
       setTimeout(()=>{
         this.barChart('bar','bar',this.weeksLabelName,this.weeksCountValues,'Total Leaves Taken in Weeks in year');
         this.radarChart('radar','radar',this.myStaticLeavesType,this.myLeaveCount,this.userTakenLeaves);
-        this.pieChart('doughnut', 'pieChart', this.myStaticLeavesType, this.userTakenLeaves);
+        this.pieChart('doughnut', 'pieChart', this.userTakenLeavesType, this.userTakenLeaves);
       // this.lineChart('bar','bar',this.weeksLabelName,this.weeksCountValues);
       },1000)  
     });    
@@ -126,7 +126,7 @@ export class ProfileComponent implements OnInit {
   }
 
 
-  pieChart(chartType: any, canvasName: any, labelValue: string[], dataValue: Number[]) {
+  pieChart(chartType: any, canvasName: any, labelValue: String[], dataValue: Number[]) {
     const Cdata = {
       labels: labelValue,
       datasets: [{
