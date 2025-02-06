@@ -5,12 +5,12 @@
     <form [formGroup]="leaveForm" (ngSubmit)="onSubmit()">
       <mat-form-field appearance="fill">
         <mat-label>Leave Type</mat-label>
-        <mat-select formControlName="leaveType" required>
-          <mat-option value="Paid Leaves">Paid Leave</mat-option>
-          <mat-option value="Casual Leaves">Casual Leave</mat-option>
+        <mat-select formControlName="leaveType"> 
+          <mat-option  *ngFor="let leaves of myStaticLeavesType" [disabled]="leaves.numberOfLeaves<=0" [value]="leaves.leaveType">{{leaves.leaveType}} <mat-chip>{{leaves.numberOfLeaves}}</mat-chip>  </mat-option>
+          <!-- <mat-option value="Casual Leaves">Casual Leave</mat-option>
           <mat-option value="Floater Leaves">Floater Leave</mat-option>
           <mat-option value="Festive Leaves">Festive Leave</mat-option>
-          <mat-option value="Emergency Leaves">Emergency Leave</mat-option>
+          <mat-option value="Emergency Leaves">Emergency Leave</mat-option> -->
         </mat-select>
       </mat-form-field>
 

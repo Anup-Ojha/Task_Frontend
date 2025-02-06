@@ -106,3 +106,9 @@ tr:hover {
     max-width: 100%; /* Full width on smaller screens */
   }
 }
+
+
+.css-chip{
+  text-align: end;
+  justify-content: end;
+}

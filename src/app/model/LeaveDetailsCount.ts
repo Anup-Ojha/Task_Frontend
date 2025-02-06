@@ -1,4 +1,11 @@
 export interface LeaveCount{
-    COUNT:Number
+    COUNT:number
     type:String
+}
+
+export interface FullLeaveObj{
+    id:Number
+    leaveDetails:String
+    leaveType:String
+    numberOfLeaves:number
 }

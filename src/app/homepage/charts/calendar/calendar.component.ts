@@ -26,20 +26,20 @@ export class CalanderComponent implements OnInit {
   eventDate:Date[]=[];
   eventTime:String[]=[];
   wholeEventObject:EventData[]=[];
-  // locations:any;
+  locations:any;
   ngOnInit(): void {
     console.log(this.calanderService.getCalData())
 
-  // var arrs = this.calanderService.getCalData();
-  // this.locations = arrs.map(([lat, lng]) => ({lat, lng}));
-  // console.log(this.locations);
+  var arrs = this.calanderService.getCalData();
+  this.locations = arrs.map(([lat, lng]) => ({lat, lng}));
+  console.log(this.locations);
   }
 
-  // convertions(){
-  //   var arrs = this.calanderService.getCalData();
-  // this.locations = arrs.map(([lat, lng]) => ({lat, lng}));
-  // console.log(this.locations);
-  // }
+  convertions(){
+    var arrs = this.calanderService.getCalData();
+  this.locations = arrs.map(([lat, lng]) => ({lat, lng}));
+  console.log(this.locations);
+  }
 
 
 

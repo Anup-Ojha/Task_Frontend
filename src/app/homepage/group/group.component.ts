@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { pipe } from 'rxjs';
 import { Employee } from 'src/app/model/employee';
+import { FullLeaveObj, LeaveCount } from 'src/app/model/LeaveDetailsCount';
 import { Leaves } from 'src/app/model/leaves';
 import { LeaveService } from 'src/app/services/leaves.service';
 import { LoginService } from 'src/app/services/loginhttp.service';
@@ -34,6 +35,7 @@ export class GroupComponent implements OnInit{
       console.error("Error parsing employee data:", error);
     }
 
+    this.getAllStaticLeaves();
     
     this.leaveForm = this.fb.group({
       leaveType: ['', Validators.required],
@@ -45,9 +47,9 @@ export class GroupComponent implements OnInit{
         employeeId: [this.employeesMainData.employeeId, Validators.required]
       })
     });
-
-    this.fetchLeaveDetails()
-
+    setTimeout(()=>{
+      this.fetchLeaveDetails()
+    },500)
   }
 
   leaveData:Leaves
@@ -75,10 +77,36 @@ export class GroupComponent implements OnInit{
 
 fetchLeaveDetails(): void {
   this.leaveService.getAllEmployeeLeavesData(this.employeesMainData.employeeId).subscribe((data)=>{
-    this.leaveDetails=data.reverse().slice(0,10);
+    this.leaveDetails=data.reverse().slice(0,7);
   })
   }
 
+   myStaticLeavesType:FullLeaveObj[]=[];
+   myUserData:LeaveCount[]=[];
+   myAvailableLeaves:number[]=[];
+   arrayOfUserCount:number[]=[];
 
+  getAllStaticLeaves(){
+      this.leaveService.getAllUserLeaveCount(this.employeesMainData.employeeId).subscribe((data:LeaveCount[])=>{
+      this.myUserData=data;
+      if(this.myUserData!=null){
+        for(let i=0;i<this.myUserData.length;i++){
+          this.arrayOfUserCount.push(this.myUserData[i].COUNT);
+        }
+      }
+      })
+    
+      this.leaveService.getAllStaticLeaves().subscribe((data) => {  
+        this.myStaticLeavesType = data;
+          if(this.myStaticLeavesType!=null){
+            for(let i=0;i<this.myStaticLeavesType.length;i++){
+              this.myStaticLeavesType[i].numberOfLeaves=(this.myStaticLeavesType[i].numberOfLeaves - this.arrayOfUserCount[i]);
+        }
+      }
+  })
+
+  
+
+
+  }
 }
-
