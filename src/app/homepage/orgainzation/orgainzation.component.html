@@ -1,33 +1,33 @@
 <h2>Employees Details</h2>
 
-<div class="card-container" *ngFor="let employee of allEmployeeData">
-        <mat-card class="employee-card">
-          <mat-card-header>
-            <mat-card-title>{{ employee.firstName }}</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <div class="detail-row">
-              <span class="detail-label">Employee ID:</span>
-              <span class="detail-value">{{ employee.employeeId }}</span>
-            </div>
-            <div class="detail-row">
-              <span class="detail-label">Full Name:</span>
-              <span class="detail-value">{{ employee.firstName }} {{ employee.lastName }}</span>
-            </div>
-            <div class="detail-row">
-              <span class="detail-label">Date of Birth:</span>
-              <span class="detail-value">{{ employee.dateOfBirth | date }}</span>
-            </div>
-            <div class="detail-row">
-              <span class="detail-label">Hire Date:</span>
-              <span class="detail-value">{{ employee.hireDate | date }}</span>
-            </div>
-            <div class="detail-row">
-              <span class="detail-label">Manager ID:</span>
-              <span class="detail-value">{{ employee.managerId }}</span>
-            </div>
-          </mat-card-content>
-        </mat-card>
-      </div>
-
-
+<div class="card-container">
+  <div *ngFor="let employee of allEmployeeData">
+    <mat-card class="employee-card">
+      <mat-card-header>
+        <mat-card-title>{{ employee.firstName }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="detail-row">
+          <span class="detail-label">Employee ID:</span>
+          <span class="detail-value">{{ employee.employeeId }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Full Name:</span>
+          <span class="detail-value">{{ employee.firstName }} {{ employee.lastName }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Date of Birth:</span>
+          <span class="detail-value">{{ employee.dateOfBirth | date }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Hire Date:</span>
+          <span class="detail-value">{{ employee.hireDate | date }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Manager ID:</span>
+          <span class="detail-value">{{ employee.managerId }}</span>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

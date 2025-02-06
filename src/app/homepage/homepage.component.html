@@ -6,26 +6,30 @@
     </div>
 
     <mat-nav-list>
-      
+      <div class="align">
       <a mat-list-item routerLink="home" (click)="navigateToMenu()">
-        <mat-icon svgIcon="attendance"></mat-icon> Attendance
-      </a>
-
+        <h3><mat-icon svgIcon="attendance"></mat-icon>Attendance</h3>
+      </a></div>
+      <div class="align">
       <a mat-list-item routerLink="/profile" (click)="navigateToProfile()">
-        <mat-icon svgIcon="profile"></mat-icon> Profile
-      </a>
+        <h3><mat-icon svgIcon="profile"></mat-icon>Profile</h3>
+      </a></div>
 
+<div class="align">
       <a mat-list-item routerLink="/group" (click)="navigateToGroup()">
-        <mat-icon svgIcon="group"></mat-icon> Leave Logs
-      </a>
+        <h3><mat-icon svgIcon="group"></mat-icon>Leave Logs</h3>
+      </a></div>
 
+<div class="align">
       <a mat-list-item routerLink="/organisation" (click)="navigateToOrganinzation()">
-        <mat-icon svgIcon="organisation"></mat-icon> Organization 
-      </a>
+        <h3><mat-icon svgIcon="organisation"></mat-icon>Organization</h3>
+      </a></div>
 
-      <a mat-list-item routerLink="/settings" (click)="navigateToSettings()">
-        <mat-icon svgIcon="logout"></mat-icon> Logout
+      <div class="align">
+      <a mat-list-item class="logout-button" routerLink="/settings" (click)="navigateToSettings()">
+        <h3><mat-icon svgIcon="logout"></mat-icon>Logout</h3>
       </a>
+    </div>
     </mat-nav-list>
   </mat-drawer>
 

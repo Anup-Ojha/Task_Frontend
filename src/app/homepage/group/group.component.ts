@@ -5,6 +5,7 @@ import { pipe } from 'rxjs';
 import { Employee } from 'src/app/model/employee';
 import { FullLeaveObj, LeaveCount } from 'src/app/model/LeaveDetailsCount';
 import { Leaves } from 'src/app/model/leaves';
+import { StaticLeavesModel } from 'src/app/model/staticLeaves';
 import { LeaveService } from 'src/app/services/leaves.service';
 import { LoginService } from 'src/app/services/loginhttp.service';
 
@@ -69,10 +70,13 @@ export class GroupComponent implements OnInit{
         employeeId: [this.employeesMainData.employeeId, Validators.required]
       })
     });
-
+    this.getAllStaticLeaves()
     setTimeout(()=>{
     this.fetchLeaveDetails()
+    this.getAllStaticLeaves()
     },1000)
+    this.getAllStaticLeaves()
+
   }
 
 fetchLeaveDetails(): void {
@@ -81,28 +85,38 @@ fetchLeaveDetails(): void {
   })
   }
 
-   myStaticLeavesType:FullLeaveObj[]=[];
-   myUserData:LeaveCount[]=[];
+   myStaticLeaves:FullLeaveObj[]=[];
+   myUser:LeaveCount[]=[];
    myAvailableLeaves:number[]=[];
-   arrayOfUserCount:number[]=[];
 
   getAllStaticLeaves(){
       this.leaveService.getAllUserLeaveCount(this.employeesMainData.employeeId).subscribe((data:LeaveCount[])=>{
-      this.myUserData=data;
-      if(this.myUserData!=null){
-        for(let i=0;i<this.myUserData.length;i++){
-          this.arrayOfUserCount.push(this.myUserData[i].COUNT);
-        }
-      }
+      this.myUser=data;
+      // for(let i=0;i<this.myUser.length;i++){
+      //     if(this.myUser[i].)
+      // }
       })
     
-      this.leaveService.getAllStaticLeaves().subscribe((data) => {  
-        this.myStaticLeavesType = data;
-          if(this.myStaticLeavesType!=null){
-            for(let i=0;i<this.myStaticLeavesType.length;i++){
-              this.myStaticLeavesType[i].numberOfLeaves=(this.myStaticLeavesType[i].numberOfLeaves - this.arrayOfUserCount[i]);
+      this.leaveService.getAllStaticLeaves().subscribe((data:StaticLeavesModel[]) => {  
+        this.myStaticLeaves = data;
+        this.myStaticLeaves.sort();
+        this.myUser.sort();
+        
+
+          if(this.myStaticLeaves!=null){
+            for(let i=0;i<this.myStaticLeaves.length;i++){
+              delete this.myStaticLeaves[i].id;
+              delete this.myStaticLeaves[i].leaveDetails;
         }
       }
+      for(let i=0;i<this.myStaticLeaves.length;i++){
+        for(let j=0;j<this.myUser.length;j++){
+          if(this.myStaticLeaves[i].leaveType==this.myUser[j].type){
+            this.myStaticLeaves[i].numberOfLeaves=this.myStaticLeaves[i].numberOfLeaves - this.myUser[j].COUNT;
+          }
+        }      
+    }
+
   })
 
   

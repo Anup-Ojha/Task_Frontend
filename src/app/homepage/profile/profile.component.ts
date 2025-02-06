@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from 'src/app/model/employee';
 import { LoginService } from 'src/app/services/loginhttp.service';
-import { Chart, registerables } from 'chart.js';
+import { Chart, registerables, scales } from 'chart.js';
 import { LeaveService } from 'src/app/services/leaves.service';
 import { LeaveCount } from 'src/app/model/LeaveDetailsCount';
 import { MonthCount, WeekCount } from 'src/app/model/CalendarLogs';
@@ -200,6 +200,11 @@ const data = {
     data: data,
     options: {
       elements: {
+        scales:{
+          y:{
+            beginAtZero:true
+          }
+        },
         line: {
           borderWidth: 3
         }

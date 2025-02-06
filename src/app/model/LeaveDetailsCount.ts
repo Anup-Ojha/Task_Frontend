@@ -1,6 +1,6 @@
 export interface LeaveCount{
     COUNT:number
-    type:String
+    type:string
 }
 
 export interface FullLeaveObj{

@@ -27,7 +27,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { ProfileComponent } from './homepage/profile/profile.component';
-import { CalanderComponent } from './homepage/charts/calendar/calendar.component';
+import { CalendarComponent } from './homepage/charts/calendar/calendar.component';
 
 
 import { LoginService } from './services/loginhttp.service';
@@ -71,7 +71,7 @@ const routes: Routes = [
     GroupComponent,
     ChartsComponent,
     LoginComponent,
-    CalanderComponent,
+    CalendarComponent,
     DailychartsComponent,
     OrgainzationComponent
   ],
