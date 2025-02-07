@@ -6,3 +6,10 @@ export interface Leaves{
     note:String
     emolpyeeId:Number
 }
+
+
+export interface leavesCalendar{
+    leaveType:String
+    fromDate:Date
+    tillDate:Date
+}

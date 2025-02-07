@@ -1,6 +1,6 @@
 export interface CalanderLogs{
-    date:Date
     timeStamp:String
+    date:Date
 }
 
 export interface EventData{
