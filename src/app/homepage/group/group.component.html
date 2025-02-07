@@ -6,7 +6,9 @@
       <mat-form-field appearance="fill">
         <mat-label>Leave Type</mat-label>
         <mat-select formControlName="leaveType"> 
-          <mat-option  *ngFor="let leaves of myStaticLeaves" [disabled]="leaves.numberOfLeaves<=0" [value]="leaves.leaveType">{{leaves.leaveType}} <mat-chip>{{leaves.numberOfLeaves}}</mat-chip>  </mat-option>
+          <mat-option matTooltip="Remaining Leaves" 
+          matTooltipPosition="right"
+           *ngFor="let leaves of myStaticLeaves" [disabled]="leaves.numberOfLeaves<=0" [value]="leaves.leaveType">{{leaves.leaveType}} <mat-chip>{{leaves.numberOfLeaves}}</mat-chip>  </mat-option>
           <!-- <mat-option value="Casual Leaves">Casual Leave</mat-option>
           <mat-option value="Floater Leaves">Floater Leave</mat-option>
           <mat-option value="Festive Leaves">Festive Leave</mat-option>
@@ -55,7 +57,46 @@
       <h2>All Leave Logs and Requests</h2>
       <p>View and manage all leave applications and their statuses.</p>
     </div>
+    <div class="mat-elevation-z8">
+      <mat-table [dataSource]="leaveDetails">
+        <ng-container matColumnDef="Leave Type">
+          <mat-header-cell *matHeaderCellDef> Leave Type </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.leaveType}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="From Date">
+          <mat-header-cell *matHeaderCellDef> From Date </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.fromDate}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="Till Date">
+          <mat-header-cell *matHeaderCellDef> Till Date </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.tillDate}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="Status">
+          <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="Note">
+          <mat-header-cell *matHeaderCellDef> Note </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.note}} </mat-cell>
+        </ng-container>
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    
+      <mat-paginator [pageSizeOptions]="[8, 16,30]" showFirstLastButtons></mat-paginator>
+    </div>
+    
 
+
+
+
+
+<!-- 
     <table>
       <thead>
         <tr>
@@ -76,6 +117,4 @@
             <td colspan="6">No leave details found.</td>
         </tr>
       </tbody>
-    </table>
-  </div>
-</div>
+    </table> -->

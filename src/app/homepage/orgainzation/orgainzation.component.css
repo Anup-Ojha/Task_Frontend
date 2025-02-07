@@ -25,3 +25,38 @@
 .detail-value {
   color: #555;
 }
+
+
+.image-align{
+  padding: 0 0 0 50px;
+}
+
+/* mat-card-header{
+} */
+.example-form {
+  display: flex;
+  padding-left: 52%;
+}
+
+.form-container {
+  display: flex;
+  gap: 16px; /* Adjust the gap as needed */
+  align-items: center;
+}
+
+.example {
+  max-width: 210px;
+  padding-left: 10px;
+}
+
+.filter-sort-options {
+  display: flex;
+  text-align: center;
+  padding-top: 15px;
+  padding-right: 10px;
+}
+
+.example-button{
+  padding-left: 10px;
+  padding-top: 12px;
+}

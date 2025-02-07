@@ -21,6 +21,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -101,7 +103,11 @@ const routes: Routes = [
     MatButtonToggleModule,
     MatProgressBarModule,
     MatPaginatorModule,
-    MatChipsModule
+    MatChipsModule,
+    MatTooltipModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'})
+    
       
   ],
   providers: [LoginService,LeaveService,AllEmployees,{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },DailyAttendanceService],

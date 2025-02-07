@@ -12,13 +12,20 @@ export class AuthGuard  {
 
   canActivate(): boolean {
     const token = localStorage.getItem('token');
-
     if (token) {
       return true; 
     } else {
       this.router.navigate(['/login']);
       return false;
     }
+    this.autoLogout()
   }
+
+  autoLogout(){
+    setTimeout(()=>{
+      this.router.navigate(['logout']);
+    },30 * 60 * 1000)
+  }
+
 }
 

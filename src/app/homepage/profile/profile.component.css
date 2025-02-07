@@ -93,3 +93,16 @@ hr {
 .see-details{
   margin-top: 16px;
 }
+
+
+.dp{
+  position: absolute;
+  right: 0;
+
+}
+
+.image-align{
+  position: absolute;
+  right: 0;
+  padding-right: 10px;
+}

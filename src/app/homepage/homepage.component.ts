@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { Employee } from '../model/employee';
 const PROFILE_ICON = `
 <svg width="24" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
   <circle cx="12" cy="12" r="12" fill="#17a2b8"/>  <path d="M12 14c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm0 2c2.9 0 5.4 1.1 7 2.9-.7 1.6-2.5 2.1-4.5 2.1H9.5c-2 0-3.8-.5-4.5-2.1C6.6 17.1 9.1 16 12 16zm4.1-8.17L14 8l-2.1 2.1L9.5 9.5l-1.4 1.4L12 13.4l5.5-5.5z" fill="white"/>
 </svg>
 `;
+
 
 const ORGA=`<svg fill="#000000" width="24" height="24" viewBox="0 0 36 36" version="1.1"  preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>group-solid</title>
@@ -58,7 +60,8 @@ export class HomepageComponent {
 
   }
     drawerOpened = true; // Initially open
-
+    dataEmp=localStorage.getItem('employee');
+    employee: Employee = JSON.parse(this.dataEmp);
   
     navigateToProfile() {
       this.router.navigate(['home/profile']);
@@ -74,7 +77,6 @@ export class HomepageComponent {
     navigateToSettings() {
       this.router.navigate(['logout']);
       this.on=false;
-
     }
 
     navigateToMenu(){

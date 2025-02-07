@@ -43,6 +43,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() { 
     const employee: Employee = JSON.parse(this.employeeString);
     this.employee = employee; 
+    console.log(this.employee);
     this.joiningDate=this.employee.hireDate;
     // this.currentYear = this.currDate.getFullYear();
     this.getDatesArray();
@@ -199,16 +200,7 @@ const data = {
     type: chartType,
     data: data,
     options: {
-      elements: {
-        scales:{
-          y:{
-            beginAtZero:true
-          }
-        },
-        line: {
-          borderWidth: 3
-        }
-      }
+      
     }
   };
 

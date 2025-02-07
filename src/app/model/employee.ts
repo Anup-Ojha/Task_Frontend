@@ -8,6 +8,7 @@ export interface Employee{
         hireDate:Date
         managerId:Number
         salary:Number
+        imageLink:String
         accountDetails:[{
             accountNumber:Number,
             accountName:String,

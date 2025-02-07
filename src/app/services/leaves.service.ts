@@ -5,10 +5,7 @@ import { StaticLeavesModel } from "../model/staticLeaves";
 import { MonthCount } from "../model/CalendarLogs";
 
 @Injectable()
-export class LeaveService{
-
-
-
+export class LeaveService {
     http=inject(HttpClient)
     myStaticLeavesType:String[]=[];
     myStaticLeavesCount:Number[]=[];
@@ -27,7 +24,11 @@ export class LeaveService{
     }
 
     getAllEmployeeLeavesData(id:Number){
-        return this.http.get<any>(`http://localhost:8080/leaves/${id}`);
+        return this.http.get<Leaves[]>(`http://localhost:8080/leaves/${id}`);
+    }
+
+    fetchAndReturn(id:Number){
+      return this.http.get(`http://localhost:8080/leaves/${id}`);
     }
 
     getAllStaticLeaves(){
@@ -50,5 +51,7 @@ export class LeaveService{
     getFilterYearData(startDate,endDate,id){
       return this.http.get<any>(`http://localhost:8080/leaves/filterDateData/${startDate}/${endDate}/${id}`);
     }
+
+
 
 }

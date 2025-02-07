@@ -113,3 +113,7 @@ mat-drawer-content {
 .logout-button:hover {
   background-color: rgb(247, 71, 71);
 }
+
+img {
+  border-radius: 50%;
+}

@@ -1,5 +1,7 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { pipe } from 'rxjs';
 import { Employee } from 'src/app/model/employee';
@@ -14,76 +16,77 @@ import { LoginService } from 'src/app/services/loginhttp.service';
   templateUrl: './group.component.html',
   styleUrls: ['./group.component.css']
 })
-export class GroupComponent implements OnInit{
+export class GroupComponent implements OnInit, AfterViewInit {
 
-  leaveService=inject(LeaveService)
-
+  leaveService = inject(LeaveService);
   leaveForm: FormGroup;
 
-  constructor(private fb: FormBuilder,private loginService:LoginService,private router:Router) {}
-  
-  currentEmployee:Employee=this.loginService.getEmployeeData();
-  employeeString: string = localStorage.getItem('employee'); 
-  employeesMainData: Employee; 
-  leaveDetails:Leaves[]=[];
-  
+  constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router) {}
+
+  currentEmployee: Employee = this.loginService.getEmployeeData();
+  employeeString: string = localStorage.getItem('employee');
+  displayedColumns: string[] = ['Leave Type', 'From Date', 'Till Date', 'Status', 'Note'];
+  employee: Employee = JSON.parse(this.employeeString);
+  employeesMainData: Employee = this.employee;
+  leaveDetails: MatTableDataSource<any> = new MatTableDataSource();
+
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+  }
+
   ngOnInit(): void {
-
-    try {
-      const employee: Employee = JSON.parse(this.employeeString);
-      this.employeesMainData = employee; 
-    } catch (error) {
-      console.error("Error parsing employee data:", error);
-    }
-
     this.getAllStaticLeaves();
-    
+
     this.leaveForm = this.fb.group({
       leaveType: ['', Validators.required],
       fromDate: ['', Validators.required],
       tillDate: ['', Validators.required],
       status: ['', Validators.required],
       note: [''],
-      employee: this.fb.group({ 
+      employee: this.fb.group({
         employeeId: [this.employeesMainData.employeeId, Validators.required]
       })
     });
     setTimeout(()=>{
-      this.fetchLeaveDetails()
-    },500)
+      this.fetchLeaveDetails();
+    },1000)
+ 
+
   }
 
-  leaveData:Leaves
+  leaveData: Leaves;
   onSubmit(): void {
     if (this.leaveForm.valid) {
-      this.leaveData=this.leaveForm.value;
+      this.leaveData = this.leaveForm.value;
       this.leaveService.setEmployeeLeaves(this.leaveData);
     }
-    
+
     this.leaveForm = this.fb.group({
       leaveType: ['', Validators.required],
       fromDate: ['', Validators.required],
       tillDate: ['', Validators.required],
       status: ['', Validators.required],
       note: [''],
-      employee: this.fb.group({ 
+      employee: this.fb.group({
         employeeId: [this.employeesMainData.employeeId, Validators.required]
       })
     });
-    this.getAllStaticLeaves()
-    setTimeout(()=>{
-    this.fetchLeaveDetails()
-    this.getAllStaticLeaves()
-    },1000)
-    this.getAllStaticLeaves()
-
+    this.getAllStaticLeaves();
+    setTimeout(() => {
+      this.fetchLeaveDetails();
+      this.getAllStaticLeaves();
+    }, 1000);
+    this.fetchLeaveDetails();
+    this.getAllStaticLeaves();
   }
 
-fetchLeaveDetails(): void {
-  this.leaveService.getAllEmployeeLeavesData(this.employeesMainData.employeeId).subscribe((data)=>{
-    this.leaveDetails=data.reverse().slice(0,7);
-  })
-  }
+  fetchLeaveDetails() {
+    this.leaveService.getAllEmployeeLeavesData(this.employeesMainData.employeeId).subscribe((data: Leaves[]) => {
+      this.leaveDetails.data = data.reverse();
+      this.leaveDetails.paginator=this.paginator;
+    });
+  }  
 
    myStaticLeaves:FullLeaveObj[]=[];
    myUser:LeaveCount[]=[];
