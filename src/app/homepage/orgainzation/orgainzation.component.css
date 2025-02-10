@@ -32,16 +32,17 @@
 }
 
 /* mat-card-header{
-} */
-.example-form {
+} */.example-form {
   display: flex;
-  padding-left: 52%;
+  justify-content: flex-end;
+  flex-wrap: wrap; /* Allows items to wrap on smaller screens */
 }
 
 .form-container {
   display: flex;
   gap: 16px; /* Adjust the gap as needed */
   align-items: center;
+  flex-wrap: wrap; /* Allows items to wrap on smaller screens */
 }
 
 .example {
@@ -51,12 +52,12 @@
 
 .filter-sort-options {
   display: flex;
-  text-align: center;
+  align-items: center; /* Aligns items vertically */
   padding-top: 15px;
   padding-right: 10px;
 }
 
-.example-button{
+.example-button {
   padding-left: 10px;
   padding-top: 12px;
 }

@@ -27,29 +27,24 @@ export class CalendarComponent implements OnInit,OnChanges {
   employeesMainData: Employee = this.employee;
   leaveCalData:leavesCalendar[]=[];
 
-  
-
-
   ngOnInit(): void {
 
-    
+    this.leaveService.getAllEmployeeLeavesData(this.employeesMainData.employeeId).subscribe((data)=>{
+      let testLeaveCalData:Leaves[]=data;
+
+      for(let i=0;i<testLeaveCalData.length;i++){
+          testLeaveCalData[i]['title']=testLeaveCalData[i]['leaveType']
+          testLeaveCalData[i]['start']=testLeaveCalData[i]['fromDate']
+          testLeaveCalData[i]['end']=testLeaveCalData[i]['tillDate']
+      }
+
+      this.leaveCalData=testLeaveCalData;
+    this.initializeCalendar();
+
+    })
 
       this.calendarService.getCalanderLogs(this.employeesMainData.employeeId).subscribe((data:any)=>{
         this.calData= data.map(([title, date]) => ({ title, date }));
-
-        this.leaveService.getAllEmployeeLeavesData(this.employeesMainData.employeeId).subscribe((data)=>{
-          let testLeaveCalData:Leaves[]=data;
-    
-          for(let i=0;i<testLeaveCalData.length;i++){
-              testLeaveCalData[i]['title']=testLeaveCalData[i]['leaveType']
-              testLeaveCalData[i]['start']=testLeaveCalData[i]['fromDate']
-              testLeaveCalData[i]['end']=testLeaveCalData[i]['tillDate']
-          }
-    
-          this.leaveCalData=testLeaveCalData;
-          // console.log(this.leaveCalData);
-          // console.log(testLeaveCalData);
-        })
         this.initializeCalendar();
       })
       this.initializeCalendar();

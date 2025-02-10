@@ -43,24 +43,34 @@ export class ProfileComponent implements OnInit {
   ngOnInit() { 
     const employee: Employee = JSON.parse(this.employeeString);
     this.employee = employee; 
-    console.log(this.employee);
+    // console.log(this.employee);
     this.joiningDate=this.employee.hireDate;
     // this.currentYear = this.currDate.getFullYear();
     this.getDatesArray();
     this.staticLeavesDataService.getAllStaticLeaves().subscribe((data) => {
       this.myStaticLeavesType = data.map(leave => leave.leaveType);
       this.myLeaveCount = data.map(leave => leave.numberOfLeaves); 
+      this.myLeaveCount.sort()
 
       this.staticLeavesDataService.getAllUserLeaveCount(this.employee.employeeId).subscribe((data:LeaveCount[])=>{
         this.dataForChart=data;
+
         if(this.dataForChart!=null){
-          for(let i=0;i<this.dataForChart.length;i++){
-            // console.log(this.dataForChart[i]);
-            this.userTakenLeavesType.push(this.dataForChart[i].type);
-            this.userTakenLeaves.push(this.dataForChart[i].COUNT);
-          }
-          this.userTakenLeavesType.sort();
-        }
+            this.userTakenLeavesType=this.myStaticLeavesType.sort();
+            // this.userTakenLeavesType.push(this.dataForChart[i].type);
+            // console.log(this.dataForChart)
+            for(let i=0;i<this.userTakenLeavesType.length;i++){
+              this.userTakenLeaves[i]=0;
+              for(let j=0;j<this.dataForChart.length;j++){
+                if(this.dataForChart[j].type==this.userTakenLeavesType[i]){
+                  this.userTakenLeaves[i]=this.dataForChart[j].COUNT;
+                }
+              }
+            }
+            
+          // this.userTakenLeavesType.sort();
+          // this.userTakenLeaves.sort();  
+      }
       })
 
       this.staticLeavesDataService.getAllWeeksCount(this.employee.employeeId).subscribe((data)=>{
@@ -70,7 +80,6 @@ export class ProfileComponent implements OnInit {
             this.weeksCountValues.push(this.weeksObjectData[i].count);
             this.weeksLabelName.push(this.weeksObjectData[i].day);
           }
-          this.userTakenLeavesType.sort();
         }
       })
 
@@ -101,7 +110,6 @@ export class ProfileComponent implements OnInit {
             this.yearLabelName.push(this.yearWholeData[i].month);
           }
         }
-
         let chartStatus = Chart.getChart("barChart"); // <canvas> id
             if (chartStatus != undefined) {
                chartStatus.destroy();
@@ -176,6 +184,7 @@ export class ProfileComponent implements OnInit {
 
 
 radarChart(chartType: any, canvasName: any, labelValue?: string[], dataValue?: number[],userTakenLeaves?:Number[]){
+
 const data = {
   labels: labelValue,
   datasets: [{

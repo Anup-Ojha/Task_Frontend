@@ -87,7 +87,15 @@
           <div *ngFor="let leave of leavesDetails.controls; let i = index" [formGroupName]="i">
             <mat-form-field class="width">
               <mat-label>Leave Type</mat-label>
-              <input matInput placeholder="Leave Type" formControlName="leaveType" required>
+              <!-- <input matInput placeholder="Leave Type" formControlName="leaveType" required> -->
+              <mat-select formControlName="leaveType"> 
+                <mat-option value="Paid Leaves">Paid Leave</mat-option>
+                <mat-option value="Casual Leaves">Casual Leave</mat-option>
+                <mat-option value="Floater Leaves">Floater Leave</mat-option>
+                <mat-option value="Festive Leaves">Festive Leave</mat-option>
+                <mat-option value="Emergency Leaves">Emergency Leave</mat-option>
+              </mat-select>
+
             </mat-form-field>
             <mat-form-field class="width">
               <mat-label>From Date</mat-label>

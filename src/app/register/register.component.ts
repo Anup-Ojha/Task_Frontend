@@ -110,7 +110,6 @@ export class RegisterComponent implements OnInit {
       const formData = this.singleForm.value;
       console.log(formData);
       this.registerService.registerEmployee(formData).subscribe(response => {
-        console.log('Employee registered successfully', response);
         this.router.navigate(['/login']);
       });
     } else {

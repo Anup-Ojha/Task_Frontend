@@ -73,10 +73,7 @@ export class GroupComponent implements OnInit, AfterViewInit {
       })
     });
     this.getAllStaticLeaves();
-    setTimeout(() => {
-      this.fetchLeaveDetails();
-      this.getAllStaticLeaves();
-    }, 1000);
+    this.fetchLeaveDetails();
     this.fetchLeaveDetails();
     this.getAllStaticLeaves();
   }
@@ -95,9 +92,6 @@ export class GroupComponent implements OnInit, AfterViewInit {
   getAllStaticLeaves(){
       this.leaveService.getAllUserLeaveCount(this.employeesMainData.employeeId).subscribe((data:LeaveCount[])=>{
       this.myUser=data;
-      // for(let i=0;i<this.myUser.length;i++){
-      //     if(this.myUser[i].)
-      // }
       })
     
       this.leaveService.getAllStaticLeaves().subscribe((data:StaticLeavesModel[]) => {  
@@ -117,13 +111,9 @@ export class GroupComponent implements OnInit, AfterViewInit {
           if(this.myStaticLeaves[i].leaveType==this.myUser[j].type){
             this.myStaticLeaves[i].numberOfLeaves=this.myStaticLeaves[i].numberOfLeaves - this.myUser[j].COUNT;
           }
-        }      
+        }   
     }
 
   })
-
-  
-
-
   }
 }
