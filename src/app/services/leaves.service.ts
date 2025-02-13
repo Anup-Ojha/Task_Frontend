@@ -53,6 +53,13 @@ export class LeaveService {
       return this.http.get<any>(`http://localhost:8080/leaves/filterDateData/${startDate}/${endDate}/${id}`);
     }
 
+    updateEmployeeLeaveDetails(id:Number,data:Leaves){
+      return this.http.put(`http://localhost:8080/leaves/employee/update/${id}`,data);
+    }
+
+    deleteEmployeeLeaveDetails(id:Number){
+      return this.http.delete(`http://localhost:8080/leaves/employee/delete/${id}`);
+    }
 
 
 }

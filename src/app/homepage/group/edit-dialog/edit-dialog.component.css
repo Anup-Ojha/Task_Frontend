@@ -1,0 +1,41 @@
+.mat-dialog-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h2{
+  align-items: center;
+  text-align: center;
+  text-decoration: solid;
+}
+
+.update-button {
+  margin-right: auto;
+}
+
+.delete-button {
+  margin-left: auto;
+}
+
+.form-section {
+  background-color: #fff;
+  border-radius: 8px;
+  width: 495px;
+  height: 400px;
+  justify-content: space-between;
+  margin-left: 28px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+mat-form-field{
+  padding: 0 8px 8px 0;
+}
+
+
+.update-btn{
+  margin-left: 80px;
+}
+
+
+

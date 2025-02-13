@@ -10,6 +10,9 @@ import { Leaves } from 'src/app/model/leaves';
 import { StaticLeavesModel } from 'src/app/model/staticLeaves';
 import { LeaveService } from 'src/app/services/leaves.service';
 import { LoginService } from 'src/app/services/loginhttp.service';
+import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { AttendaceLogs } from 'src/app/model/DailyAttendanceLogs';
 
 @Component({
   selector: 'app-group',
@@ -21,11 +24,11 @@ export class GroupComponent implements OnInit, AfterViewInit {
   leaveService = inject(LeaveService);
   leaveForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router) {}
+  constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router,private dialog: MatDialog) {}
 
   currentEmployee: Employee = this.loginService.getEmployeeData();
   employeeString: string = localStorage.getItem('employee');
-  displayedColumns: string[] = ['Leave Type', 'From Date', 'Till Date', 'Status', 'Note'];
+  displayedColumns: string[] = ['Leave Type', 'From Date', 'Till Date', 'Status', 'Note','Action'];
   employee: Employee = JSON.parse(this.employeeString);
   employeesMainData: Employee = this.employee;
   leaveDetails: MatTableDataSource<any> = new MatTableDataSource();
@@ -116,4 +119,17 @@ export class GroupComponent implements OnInit, AfterViewInit {
 
   })
   }
+
+
+
+  showDialog(emp:Leaves){
+    this.dialog.open(EditDialogComponent,{
+      width: '550px',
+      height: '500px',
+      data:emp
+    });
+  }
+  
+
+
 }

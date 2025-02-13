@@ -9,10 +9,6 @@
           <mat-option matTooltip="Remaining Leaves" 
           matTooltipPosition="right"
            *ngFor="let leaves of myStaticLeaves" [disabled]="leaves.numberOfLeaves<=0" [value]="leaves.leaveType">{{leaves.leaveType}} <mat-chip>{{leaves.numberOfLeaves}}</mat-chip>  </mat-option>
-          <!-- <mat-option value="Casual Leaves">Casual Leave</mat-option>
-          <mat-option value="Floater Leaves">Floater Leave</mat-option>
-          <mat-option value="Festive Leaves">Festive Leave</mat-option>
-          <mat-option value="Emergency Leaves">Emergency Leave</mat-option> -->
         </mat-select>
       </mat-form-field>
 
@@ -83,7 +79,16 @@
           <mat-header-cell *matHeaderCellDef> Note </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.note}} </mat-cell>
         </ng-container>
-    
+
+        <ng-container matColumnDef="Action" class="actions">
+          <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <!-- <button *ngIf="element.status!='Approved' && element.status!='Rejected'" mat-mini-fab color="warn"><mat-icon>delete</mat-icon></button>  -->
+            <button *ngIf="element.status!='Approved' && element.status!='Rejected'" mat-mini-fab class="edit-icon" color="accent" matTooltip="Edit" (click)="showDialog(element)" ><mat-icon>edit</mat-icon></button>
+            <button *ngIf="element.status=='Approved'" mat-mini-fab class="edit-icon" color="success" disabled matTooltip="Marked"><mat-icon>check_circle_outline</mat-icon></button>
+            <button *ngIf="element.status=='Rejected'" mat-mini-fab class="edit-icon" color="fail" disabled matTooltip="Marked"><mat-icon>not_interested</mat-icon></button>
+          </mat-cell>
+        </ng-container>
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
       </mat-table>
@@ -91,7 +96,9 @@
       <mat-paginator [pageSizeOptions]="[8, 16,30]" showFirstLastButtons></mat-paginator>
     </div>
     
-
+  </div>
+  </div>
+  
 
 
 

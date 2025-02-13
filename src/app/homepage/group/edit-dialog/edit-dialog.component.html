@@ -1,0 +1,48 @@
+<h2 mat-dialog-title><b>Update Leave Request Details</b></h2>
+<div class="form-section">
+
+  <mat-dialog-content class="mat-typography">
+    <form [formGroup]="leaveUpdateForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Leave Type</mat-label>
+        <mat-select formControlName="leaveType">
+          <mat-option matTooltip="Remaining Leaves" matTooltipPosition="right" *ngFor="let leaves of myStaticLeaves" [value]="leaves">{{leaves}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>From Date</mat-label>
+        <input matInput type="text" formControlName="fromDate" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Till Date</mat-label>
+        <input matInput type="text" formControlName="tillDate" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status" required>
+          <mat-option value="Pending" disabled>Pending</mat-option>
+          <mat-option value="Approved" disabled>Approved</mat-option>
+          <mat-option value="Rejected" disabled>Rejected</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Note</mat-label>
+        <textarea matInput formControlName="note"></textarea>
+      </mat-form-field>
+
+      <button mat-raised-button class="update-btn" color="primary" type="submit">Update</button>
+    </form>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <div class="delete-button">
+      <button mat-fab type="button" color="warn" (click)="deleteData(emp.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </mat-dialog-actions>
+</div>

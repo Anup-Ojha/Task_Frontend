@@ -20,7 +20,7 @@ export class DailyAttendanceService {
     }
 
     getCalanderLogs(id:Number){
-        return this.http.get(`http://localhost:8080/at/${id}`);
+        return this.http.get(`http://localhost:8080/attendance/calendar/${id}`);
     }
 
     

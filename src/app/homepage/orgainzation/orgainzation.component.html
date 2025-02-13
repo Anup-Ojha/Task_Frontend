@@ -22,58 +22,54 @@
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
-      </div>
-    </form>
-    <div class="example">
-        <mat-form-field>
-          <mat-label>Sort By Manager Id</mat-label>
-          <mat-select  [(ngModel)]="selected"
-          (input)="onSearchTextManagerId(selected)" placeholder="Choose Id">
-            <mat-option value="0">Clear</mat-option>
-            <mat-option *ngFor="let id of managerIdOptions" [value]="id">{{id}}</mat-option>
-          </mat-select>
-        </mat-form-field>
     </div>
-    <div class="example-button" >
-  <button mat-button type="reset" (click)="onResetClick()" color="warn">reset</button>
+  </form>
+  <div class="example">
+    <mat-form-field>
+      <mat-label>Sort By Manager Id</mat-label>
+      <mat-select [(ngModel)]="selected" (input)="onSearchTextManagerId(selected)" placeholder="Choose Id">
+        <mat-option value="0">Clear</mat-option>
+        <mat-option *ngFor="let id of managerIdOptions" [value]="id">{{id}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="example-button">
+    <button mat-button type="reset" (click)="onResetClick()" color="warn">reset</button>
   </div>
 </div>
-
 <hr>
-
 <div class="card-container">
   <div *ngFor="let employee of allEmployeeData">
     <mat-card class="employee-card" *ngIf="searchText === '' || employee.firstName.toLowerCase().includes(searchText.toLowerCase()) || employee.lastName.toLowerCase().includes(searchText.toLowerCase())">
       <div *ngIf="selected==0  ||  employee.managerId == selected">
-      <mat-card-header>
-        <span><img class="detail-value avatar image-align"  src="https://t3.ftcdn.net/jpg/01/18/01/98/240_F_118019822_6CKXP6rXmVhDOzbXZlLqEM2ya4HhYzSV.jpg" width="200" height="200"></span>
-        <mat-card-title>{{ employee.firstName }}</mat-card-title><br>
-        <mat-card-title>{{ employee.lastName }}</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <div class="detail-row">
-          <span class="detail-label">Employee ID:</span>
-          <span class="detail-value">{{ employee.employeeId }}</span>
-        </div>
-          
-        <div class="detail-row">
-          <span class="detail-label">Full Name:</span>
-          <span class="detail-value">{{ employee.firstName }} {{ employee.lastName }}</span>
-        </div>
-        <div class="detail-row">
-          <span class="detail-label">Date of Birth:</span>
-          <span class="detail-value">{{ employee.dateOfBirth | date }}</span>
-        </div>
-        <div class="detail-row">
-          <span class="detail-label">Hire Date:</span>
-          <span class="detail-value">{{ employee.hireDate | date }}</span>
-        </div>
-        <div class="detail-row">
-          <span class="detail-label">Manager ID:</span>
-          <span class="detail-value">{{ employee.managerId }}</span>
-        </div>
-      </mat-card-content>
-    </div>
+        <mat-card-header>
+          <span><img class="detail-value avatar image-align" src="../../../assets/user.png" alt="" width="200" height="200"></span>
+          <mat-card-title>{{ employee.firstName }}</mat-card-title><br>
+          <mat-card-title>{{ employee.lastName }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="detail-row">
+            <span class="detail-label">Employee ID:</span>
+            <span class="detail-value">{{ employee.employeeId }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Full Name:</span>
+            <span class="detail-value">{{ employee.firstName }} {{ employee.lastName }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Date of Birth:</span>
+            <span class="detail-value">{{ employee.dateOfBirth | date }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Hire Date:</span>
+            <span class="detail-value">{{ employee.hireDate | date }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Manager ID:</span>
+            <span class="detail-value">{{ employee.managerId }}</span>
+          </div>
+        </mat-card-content>
+      </div>
     </mat-card>
   </div>
 </div>

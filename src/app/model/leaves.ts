@@ -5,6 +5,7 @@ export interface Leaves{
     status:String
     note:String
     emolpyeeId:Number
+    id:Number
 }
 
 

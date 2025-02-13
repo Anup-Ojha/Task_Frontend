@@ -23,6 +23,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -47,6 +48,7 @@ import { DailychartsComponent } from './homepage/charts/dailycharts/dailycharts.
 import { DailyAttendanceService } from './services/DailyAttendanceLogs.service';
 import { OrgainzationComponent } from './homepage/orgainzation/orgainzation.component';
 import { AllEmployees } from './services/AllEmployees.service';
+import { EditDialogComponent } from './homepage/group/edit-dialog/edit-dialog.component';
 
 
 const routes: Routes = [
@@ -75,7 +77,8 @@ const routes: Routes = [
     LoginComponent,
     CalendarComponent,
     DailychartsComponent,
-    OrgainzationComponent
+    OrgainzationComponent,
+    EditDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -106,9 +109,8 @@ const routes: Routes = [
     MatChipsModule,
     MatTooltipModule,
     MatAutocompleteModule,
-    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'})
-    
-      
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
+    MatDialogModule
   ],
   providers: [LoginService,LeaveService,AllEmployees,{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },DailyAttendanceService],
   bootstrap: [AppComponent]

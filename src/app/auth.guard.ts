@@ -23,7 +23,8 @@ export class AuthGuard  {
 
   autoLogout(){
     setTimeout(()=>{
-      this.router.navigate(['logout']);
+    location.reload()
+      this.router.navigate(['/logout']);
     },30 * 60 * 1000)
   }
 

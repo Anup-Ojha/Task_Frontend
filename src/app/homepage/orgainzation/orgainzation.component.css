@@ -32,17 +32,17 @@
 }
 
 /* mat-card-header{
-} */.example-form {
+} */
+.example-form {
   display: flex;
   justify-content: flex-end;
-  flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+  /* padding-left: 52%; */
 }
 
 .form-container {
   display: flex;
   gap: 16px; /* Adjust the gap as needed */
   align-items: center;
-  flex-wrap: wrap; /* Allows items to wrap on smaller screens */
 }
 
 .example {
@@ -52,12 +52,17 @@
 
 .filter-sort-options {
   display: flex;
-  align-items: center; /* Aligns items vertically */
+  text-align: center;
   padding-top: 15px;
   padding-right: 10px;
 }
 
-.example-button {
+.example-button{
   padding-left: 10px;
   padding-top: 12px;
+}
+
+.example-button button {
+  background-color: #f0ad4e; /* Change this to your preferred color */
+  color: white; /* Ensures the text is readable */
 }
