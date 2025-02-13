@@ -44,7 +44,7 @@
     <mat-card class="employee-card" *ngIf="searchText === '' || employee.firstName.toLowerCase().includes(searchText.toLowerCase()) || employee.lastName.toLowerCase().includes(searchText.toLowerCase())">
       <div *ngIf="selected==0  ||  employee.managerId == selected">
         <mat-card-header>
-          <span><img class="detail-value avatar image-align" src="../../../assets/user.png" alt="" width="200" height="200"></span>
+          <span><img class="detail-value avatar image-align" src="../../../assets/user.png" alt="" width="150" height="150"></span>
           <mat-card-title>{{ employee.firstName }}</mat-card-title><br>
           <mat-card-title>{{ employee.lastName }}</mat-card-title>
         </mat-card-header>

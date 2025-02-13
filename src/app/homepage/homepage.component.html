@@ -1,38 +1,38 @@
-<app-loader *ngIf="loading">
-</app-loader>
+<app-loader *ngIf="loading"></app-loader>
 
 <mat-drawer-container class="example-container">
   <!-- Sidebar -->
   <mat-drawer mode="side" [opened]="drawerOpened" role="navigation">
     <div class="menu-header">
-        <h1><b> AMS </b></h1>
+      <h1><b>AMS</b></h1>
     </div>
 
     <mat-nav-list>
       <div class="align">
-      <a mat-list-item routerLink="home" (click)="navigateToMenu()">
-        <h3><mat-icon svgIcon="attendance"></mat-icon>Attendance</h3>
-      </a></div>
+        <a mat-list-item routerLink="home" class="home-button" (click)="navigateToMenu()">
+          <h3><mat-icon class="icon-display">event</mat-icon>Attendance</h3>
+        </a>
+      </div>
       <div class="align">
-      <a mat-list-item routerLink="/profile" (click)="navigateToProfile()">
-        <h3><img src="../../assets/user.png" alt="" width="30" height="30" >Profile</h3>
-      </a></div>
-
-<div class="align">
-      <a mat-list-item routerLink="/group" (click)="navigateToGroup()">
-        <h3><mat-icon svgIcon="group"></mat-icon>Leave Logs</h3>
-      </a></div>
-
-<div class="align">
-      <a mat-list-item routerLink="/organisation" (click)="navigateToOrganinzation()">
-        <h3><mat-icon svgIcon="organisation"></mat-icon>Organization</h3>
-      </a></div>
-
+        <a mat-list-item routerLink="/profile" class="profile-button" (click)="navigateToProfile()">
+          <h3><img class="icon-display" src="../../assets/user.png" alt="" width="30" height="30">Profile</h3>
+        </a>
+      </div>
       <div class="align">
-      <a mat-list-item class="logout-button" routerLink="/settings" (click)="navigateToSettings()">
-        <h3><img src="../../assets/logout.png" width="30" height="30"  alt="">Logout</h3>
-      </a>
-    </div>
+        <a mat-list-item routerLink="/group" class="group-button" (click)="navigateToGroup()">
+          <h3><mat-icon class="icon-display">work_off</mat-icon>Leave Logs</h3>
+        </a>
+      </div>
+      <div class="align">
+        <a mat-list-item routerLink="/organisation" class="organization-button" (click)="navigateToOrganinzation()">
+          <h3><mat-icon class="icon-display">group</mat-icon>Organization</h3>
+        </a>
+      </div>
+      <div class="align">
+        <a mat-list-item class="logout-button" routerLink="/settings" (click)="navigateToSettings()">
+          <h3><img class="icon-display" src="../../assets/logout.png" width="30" height="30" alt="">Logout</h3>
+        </a>
+      </div>
     </mat-nav-list>
   </mat-drawer>
 
@@ -41,7 +41,7 @@
       <app-charts></app-charts>
     </div>
     <div *ngIf="!on">
-    <router-outlet ></router-outlet>
-  </div>
+      <router-outlet></router-outlet>
+    </div>
   </mat-drawer-content>
 </mat-drawer-container>

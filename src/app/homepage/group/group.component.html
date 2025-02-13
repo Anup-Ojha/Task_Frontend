@@ -85,9 +85,9 @@
           <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
           <mat-cell *matCellDef="let element">
             <!-- <button *ngIf="element.status!='Approved' && element.status!='Rejected'" mat-mini-fab color="warn"><mat-icon>delete</mat-icon></button>  -->
-            <button *ngIf="element.status!='Approved' && element.status!='Rejected'" mat-mini-fab class="edit-icon" color="accent" matTooltip="Edit" (click)="showDialog(element)" ><mat-icon>edit</mat-icon></button>
-            <button *ngIf="element.status=='Approved'" mat-mini-fab class="edit-icon" color="success" disabled matTooltip="Marked"><mat-icon>check_circle_outline</mat-icon></button>
-            <button *ngIf="element.status=='Rejected'" mat-mini-fab class="edit-icon" color="fail" disabled matTooltip="Marked"><mat-icon>not_interested</mat-icon></button>
+            <button *ngIf="element.status!='Approved' && element.status!='Rejected'" mat-icon-button  color="primary" matTooltip="Edit" (click)="showDialog(element)"><mat-icon>edit</mat-icon></button>
+            <button *ngIf="element.status=='Approved'" mat-mini-fab class="edit-icon" color="success" disabled matTooltip="Marked"><mat-icon>checked</mat-icon></button>
+            <button *ngIf="element.status=='Rejected'" mat-mini-fab class="edit-icon" color="fail" disabled matTooltip="Marked"><mat-icon>remove_circle_outline</mat-icon></button>
           </mat-cell>
         </ng-container>
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

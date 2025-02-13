@@ -7,11 +7,11 @@
 b {
   border: 2px dashed #333;
   padding: 4px;
-  display: inline-block; /* Ensures the border wraps properly */
+  display: inline-block;
 }
 
 mat-drawer {
-  width: 180px; /* Slightly increased width */
+  width: 200px;
   background: linear-gradient(180deg, #4a627a, #263d54);
   color: white;
   padding-top: 20px;
@@ -21,7 +21,7 @@ mat-drawer {
 
 .menu-header {
   text-align: center;
-  font-size: 1.3rem; /* Slightly smaller font size */
+  font-size: 1.3rem;
   font-weight: bold;
   padding-bottom: 15px;
   margin-bottom: 15px;
@@ -29,17 +29,17 @@ mat-drawer {
 }
 
 mat-nav-list {
-  padding: 0; /* Removed padding from the list */
+  padding: 0;
 }
 
 mat-list-item {
   display: flex;
-  align-items: center; /* Vertically center icon and text */
-  padding: 12px 20px; /* Adjusted padding */
+  align-items: center;
+  padding: 12px 20px;
   color: white;
   font-size: 1rem;
   border-radius: 8px;
-  margin: 6px 10px; /* Added margin to the sides */
+  margin: 6px 10px;
   transition: all 0.3s ease;
 }
 
@@ -47,14 +47,13 @@ mat-list-item:hover {
   background-color: #30eff9;
   cursor: pointer;
   transform: translateX(5px);
-  padding-bottom: 25px;
 }
 
 a {
   display: flex;
   align-items: center;
-  text-decoration: none; /* Remove underline from links */
-  color: inherit; /* Inherit color from parent */
+  text-decoration: none;
+  color: inherit;
 }
 
 .align h3 {
@@ -63,12 +62,13 @@ a {
   gap: 10px;
   padding-left: 10px;
 }
+
 mat-icon {
-  color: #f39c12;
+  color: #3187A2;
 }
 
 mat-drawer-content {
-  flex: 1; /* Use flex-grow to fill remaining space */
+  flex: 1;
   background-color: #f5f6fa;
   padding: 20px;
   overflow-y: auto;
@@ -87,33 +87,51 @@ mat-drawer-content {
 }
 
 .menu-toggle-button:hover {
-  background-color: #f2770c;
+  background-color: blue;
 }
 
-/* Styles for the menu items */
 .mat-nav-list .mat-list-item .mat-list-item-content {
   display: flex;
   align-items: center;
 }
 
 .mat-nav-list .mat-list-item .mat-list-item-content .mat-list-item-icon {
-  margin-left: 10px; /* Adjust spacing as needed */
+  margin-left: 10px;
 }
 
 .mat-nav-list .mat-list-item .mat-list-item-content .mat-list-item-text {
-  flex-grow: 1; /* Allow text to take up available space */
+  flex-grow: 1;
 }
 
 .logout-button {
-  position: absolute; 
+  position: absolute;
   bottom: 0;
   padding-bottom: 5px;
 }
 
 .logout-button:hover {
   background-color: rgb(247, 71, 71);
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.profile-button:hover,
+.group-button:hover,
+.organization-button:hover,
+.home-button:hover {
+  border: #263d54;
+  outline: #333;
+  background-color: #f39c12;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.icon-display {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
 }
 
 img {
   border-radius: 50%;
+  transition: border-radius 0.3s ease;
 }

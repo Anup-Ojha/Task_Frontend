@@ -1,11 +1,10 @@
-import { Calendar, CalendarOptions } from '@fullcalendar/core'; 
+import {  CalendarOptions } from '@fullcalendar/core'; 
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import { AfterViewInit, Component, inject, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, inject, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { DailyAttendanceService } from 'src/app/services/DailyAttendanceLogs.service';
 import { CalanderLogs } from 'src/app/model/CalendarLogs';
 import { Employee } from 'src/app/model/employee';
-import { timestamp } from 'rxjs';
 import { LeaveService } from 'src/app/services/leaves.service';
 import { Leaves, leavesCalendar } from 'src/app/model/leaves';
 
@@ -45,6 +44,7 @@ export class CalendarComponent implements OnInit,OnChanges {
 
       this.calendarService.getCalanderLogs(this.employeesMainData.employeeId).subscribe((data:any)=>{
         this.calData= data.map(([title, date]) => ({ title, date }));
+       // this.calData[this.calData.length+1].push({color:"red"})
         this.initializeCalendar();
       })
       this.initializeCalendar();
@@ -60,7 +60,7 @@ export class CalendarComponent implements OnInit,OnChanges {
         initialView: 'dayGridMonth',
         plugins: [dayGridPlugin, interactionPlugin],
         dateClick: this.handleDateClick.bind(this),
-        eventSources: [this.leaveCalData,this.calData]
+        eventSources: [ this.leaveCalData,this.calData]
       };
   }
 
