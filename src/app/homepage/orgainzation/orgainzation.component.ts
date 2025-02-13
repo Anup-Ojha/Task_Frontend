@@ -10,7 +10,7 @@ import { AllEmployees } from 'src/app/services/AllEmployees.service';
   styleUrls: ['./orgainzation.component.css']
 })
 export class OrgainzationComponent implements OnInit {
-
+  loading:boolean=true;
   employeeService = inject(AllEmployees);
   allEmployeeData: Employee[] = [];
   options: string[] = [];
@@ -25,12 +25,14 @@ export class OrgainzationComponent implements OnInit {
         this.options.push(this.allEmployeeData[i].firstName + " " + this.allEmployeeData[i].lastName);
         this.managerIdOptions.add(this.allEmployeeData[i].managerId);
       }
+    this.loading=false;
     });
 
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value || '')),
     );
+
   }
 
   searchValueInput: string = '';

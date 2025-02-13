@@ -20,7 +20,7 @@ import { AttendaceLogs } from 'src/app/model/DailyAttendanceLogs';
   styleUrls: ['./group.component.css']
 })
 export class GroupComponent implements OnInit, AfterViewInit {
-
+  loading:boolean=true;
   leaveService = inject(LeaveService);
   leaveForm: FormGroup;
 
@@ -53,6 +53,7 @@ export class GroupComponent implements OnInit, AfterViewInit {
     });
     setTimeout(()=>{
       this.fetchLeaveDetails();
+      this.loading=false;
     },1000)
  
 
@@ -79,6 +80,8 @@ export class GroupComponent implements OnInit, AfterViewInit {
     this.fetchLeaveDetails();
     this.fetchLeaveDetails();
     this.getAllStaticLeaves();
+
+
   }
 
   fetchLeaveDetails() {
@@ -126,8 +129,12 @@ export class GroupComponent implements OnInit, AfterViewInit {
     this.dialog.open(EditDialogComponent,{
       width: '550px',
       height: '500px',
-      data:emp
+      data:emp,
     });
+    this.dialog.afterAllClosed.subscribe((res)=>{
+      console.log(res)
+        this.ngOnInit();
+    })
   }
   
 

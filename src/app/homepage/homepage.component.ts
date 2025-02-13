@@ -41,7 +41,7 @@ const LOGOUT_ICON = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent {
-
+  loading:boolean=false;
   toggleDrawer(): void {
     this.drawerOpened = !this.drawerOpened;
   }
@@ -49,6 +49,7 @@ export class HomepageComponent {
   on=true;
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,private router:Router) {
+    this.loading=true
     iconRegistry.addSvgIconLiteral('profile', sanitizer.bypassSecurityTrustHtml(PROFILE_ICON));
     iconRegistry.addSvgIconLiteral('group', sanitizer.bypassSecurityTrustHtml(LEAVE_LOGS));
     iconRegistry.addSvgIconLiteral('logout', sanitizer.bypassSecurityTrustHtml(LOGOUT_ICON));
@@ -57,6 +58,7 @@ export class HomepageComponent {
 
 
     // console.log(localStorage.getItem('token')); // ✅ Get token from localStorage
+    this.loading=false
 
   }
     drawerOpened = true; // Initially open

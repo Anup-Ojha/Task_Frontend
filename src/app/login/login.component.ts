@@ -55,11 +55,20 @@ export class LoginComponent implements OnInit {
     } else {
       alert("Please fill in all required fields.");
     }
+    this.autoLogout()
   }
   
 
 
   goToRegister() {
     this.router.navigate(['/register']);
+  }
+
+
+  autoLogout(){
+    setTimeout(()=>{
+    location.reload()
+      this.router.navigate(['/logout']);
+    },30*60*1000)
   }
 }

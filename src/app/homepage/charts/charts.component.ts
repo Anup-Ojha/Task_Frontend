@@ -12,6 +12,7 @@ Chart.register(...registerables);
 
 export class ChartsComponent {
   show=true;
+  loading:boolean=false;
 
   onCalanderButtonClick(){
     this.show=!this.show;

@@ -14,7 +14,7 @@ Chart.register(...registerables);
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  
+  loading:boolean=true;
   employeeString: string = localStorage.getItem('employee'); 
   employee: Employee; 
   chart: any;
@@ -90,6 +90,7 @@ export class ProfileComponent implements OnInit {
         this.radarChart('radar','radar',this.myStaticLeavesType,this.myLeaveCount,this.userTakenLeaves);
         this.pieChart('doughnut', 'pieChart', this.userTakenLeavesType, this.userTakenLeaves);
       // this.lineChart('bar','bar',this.weeksLabelName,this.weeksCountValues);
+      this.loading=false;
       },1000)  
     });    
 
@@ -98,6 +99,7 @@ export class ProfileComponent implements OnInit {
 
 
   filterDataByWholeYear(selected){
+    this.loading=true
     let startDate=selected+"-01-01";
     let endDate=selected+"-12-31";
     this.staticLeavesDataService.getFilterYearData(startDate,endDate,this.employee.employeeId).subscribe((data)=>{
@@ -117,6 +119,7 @@ export class ProfileComponent implements OnInit {
         this.yearChart=true;
         setTimeout(()=>{
           this.barChart('bar','barChart',this.yearLabelName,this.yearCountValues,'Total Leaves Taken in a Month In a Year');
+          this.loading=false
         },1000)
       })
   }

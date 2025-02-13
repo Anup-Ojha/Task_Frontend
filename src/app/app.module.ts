@@ -24,6 +24,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -49,6 +50,7 @@ import { DailyAttendanceService } from './services/DailyAttendanceLogs.service';
 import { OrgainzationComponent } from './homepage/orgainzation/orgainzation.component';
 import { AllEmployees } from './services/AllEmployees.service';
 import { EditDialogComponent } from './homepage/group/edit-dialog/edit-dialog.component';
+import { LoaderComponent } from './loader/loader.component';
 
 
 const routes: Routes = [
@@ -78,7 +80,8 @@ const routes: Routes = [
     CalendarComponent,
     DailychartsComponent,
     OrgainzationComponent,
-    EditDialogComponent
+    EditDialogComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -110,7 +113,8 @@ const routes: Routes = [
     MatTooltipModule,
     MatAutocompleteModule,
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
-    MatDialogModule
+    MatDialogModule,
+    MatProgressSpinnerModule
   ],
   providers: [LoginService,LeaveService,AllEmployees,{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },DailyAttendanceService],
   bootstrap: [AppComponent]

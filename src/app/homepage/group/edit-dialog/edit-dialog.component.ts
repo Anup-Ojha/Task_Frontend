@@ -39,7 +39,6 @@ export class EditDialogComponent {
     let leaveData: Leaves;
       leaveData = this.leaveUpdateForm.value;
       this.leaveService.updateEmployeeLeaveDetails(leaveData.id,leaveData).subscribe((res)=>{
-        console.log(res)
       });
     }
     setTimeout(()=>{

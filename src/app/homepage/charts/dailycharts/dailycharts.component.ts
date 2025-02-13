@@ -13,7 +13,7 @@ import { LeaveService } from 'src/app/services/leaves.service';
   styleUrls: ['./dailycharts.component.css']
 })
 export class DailychartsComponent {
-
+  loading:boolean=false;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   submitButton=false;
 
@@ -58,6 +58,7 @@ displayTableData(){
 }
 
   constructor(private fb: FormBuilder,private staticLeavesData: LeaveService,private dailyAttendaceService:DailyAttendanceService) {
+    this.loading=true
     const employee: Employee = JSON.parse(this.employeeString);
     this.employeesMainData = employee;
     this.displayTableData();
@@ -74,6 +75,8 @@ displayTableData(){
       employeeId:[this.employeesMainData.employeeId,Validators.required],  
       value:['',Validators.required]
     });
+    this.loading=false
+
   }
 
   submitForm() {

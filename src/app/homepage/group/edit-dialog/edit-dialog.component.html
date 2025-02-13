@@ -1,8 +1,8 @@
 <h2 mat-dialog-title><b>Update Leave Request Details</b></h2>
 <div class="form-section">
 
-  <mat-dialog-content class="mat-typography">
-    <form [formGroup]="leaveUpdateForm" (ngSubmit)="onSubmit()">
+  <mat-dialog-content class="mat-typography" aria-modal="true">
+    <form [formGroup]="leaveUpdateForm" (ngSubmit)="onSubmit()" aria-modal="true">
       <mat-form-field appearance="fill">
         <mat-label>Leave Type</mat-label>
         <mat-select formControlName="leaveType">
